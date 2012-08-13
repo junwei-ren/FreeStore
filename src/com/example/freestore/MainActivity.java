@@ -19,6 +19,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         list = (ListView)findViewById(R.id.appList);
         list.setAdapter(new StoreListAdapter());
+        
     }
 
     @Override
@@ -29,7 +30,7 @@ public class MainActivity extends Activity {
     
     class StoreListAdapter extends ArrayAdapter {
     	StoreListAdapter() {
-    		super(MainActivity.this, R.layout.list_item);
+    		super(MainActivity.this, R.layout.list_item, new String[24]);
     	}
     	public View getView(int position, View convertView,
     			ViewGroup parent) {
