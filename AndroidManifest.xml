@@ -6,6 +6,7 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="15" />
+
     <uses-configuration />
 
     <application
@@ -20,6 +21,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".TabHomePageActivity"
+            android:label="@string/tab_activity_home" >
+            
         </activity>
     </application>
 
