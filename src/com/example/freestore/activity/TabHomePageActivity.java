@@ -1,28 +1,17 @@
 package com.example.freestore.activity;
 
+import java.util.ArrayList;
+
 import com.example.freestore.R;
+import com.example.freestore.adapter.*;
 
 import android.os.Bundle;
-import android.app.Activity;
-import android.app.ActivityGroup;
-import android.app.LocalActivityManager;
 import android.app.TabActivity;
-import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TabHost;
-import android.widget.TabWidget;
-import android.widget.TextView;
 
 public class TabHomePageActivity extends TabActivity {
-
+	ListView list;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tab_homepage);
@@ -30,5 +19,11 @@ public class TabHomePageActivity extends TabActivity {
 //		tabHost.setup(new LocalActivityManager(this, false));
 		tabHost.addTab(tabHost.newTabSpec("Recommand").setIndicator("Recommand").setContent(R.id.appList)); 
 		tabHost.addTab(tabHost.newTabSpec("Latest Update").setIndicator("Latest Update").setContent(R.id.appList)); 
+		try {
+		list.setAdapter(new StoreListAdapter(this, R.layout.list_item, R.id.listItemText, new ArrayList<String>(24)));
+		}
+		catch (java.lang.NullPointerException e) {
+			e.printStackTrace();
+		}
 	}
 }
