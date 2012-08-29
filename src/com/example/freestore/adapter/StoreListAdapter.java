@@ -12,8 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 public class StoreListAdapter extends ArrayAdapter<String> {
-	public StoreListAdapter(Context context, int resource, int textViewResourceId, List<String> items) {
-		super(context, resource, textViewResourceId, items);
+	public StoreListAdapter(Context context, int resource, List<String> items) {
+		super(context, resource, items);
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {

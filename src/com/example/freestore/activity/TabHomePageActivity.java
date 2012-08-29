@@ -7,6 +7,7 @@ import com.example.freestore.adapter.*;
 
 import android.os.Bundle;
 import android.app.TabActivity;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TabHost;
 
@@ -16,14 +17,19 @@ public class TabHomePageActivity extends TabActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tab_homepage);
 		TabHost tabHost= (TabHost)getTabHost();
-//		tabHost.setup(new LocalActivityManager(this, false));
+		ArrayList<String> items = new ArrayList<String>();
+		list = (ListView)findViewById(R.id.appList);
+
+		for(int i=0;i<30;i++) {
+			items.add(getString(R.string.list_item_string));
+		}
+
+		list.setAdapter(new StoreListAdapter(this, R.layout.list_item, items));	
+		
+		list = (ListView)findViewById(R.id.appList2);
+		list.setAdapter(new StoreListAdapter(this, R.layout.list_item, items));	
 		tabHost.addTab(tabHost.newTabSpec("Recommand").setIndicator("Recommand").setContent(R.id.appList)); 
-		tabHost.addTab(tabHost.newTabSpec("Latest Update").setIndicator("Latest Update").setContent(R.id.appList)); 
-		try {
-		list.setAdapter(new StoreListAdapter(this, R.layout.list_item, R.id.listItemText, new ArrayList<String>(24)));
-		}
-		catch (java.lang.NullPointerException e) {
-			e.printStackTrace();
-		}
+		tabHost.addTab(tabHost.newTabSpec("Latest Update").setIndicator("Latest Update").setContent(R.id.appList2));
+
 	}
 }
